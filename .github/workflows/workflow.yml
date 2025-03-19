@@ -19,11 +19,22 @@ jobs:
 
       # Debug: Udskriv miljøvariabler for at sikre, at de er sat korrekt
       - name: Debug Environment Variables
-        run: env | grep DB_ || echo "No DB_ variables found!"
+        run: |
+          echo "DB_HOST=${{ secrets.DB_HOST }}"
+          echo "DB_PORT=${{ secrets.DB_PORT }}"
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}"
+          echo "DB_PASSWORD=********"  # Skjuler password, så det ikke vises i logs
 
-      # Debug: Test databaseforbindelse til Neon.tech
       - name: Test Database Connection
-        run: nc -zv ${{ secrets.DB_HOST }} ${{ secrets.DB_PORT }}
+        run: |
+          if [ -z "${{ secrets.DB_HOST }}" ] || [ -z "${{ secrets.DB_PORT }}" ] || [ -z "${{ secrets.DB_USERNAME }}" ] || [ -z "${{ secrets.DB_PASSWORD }}" ]; then
+            echo "⚠️ En af database-secrets er ikke sat korrekt!"
+            exit 1
+          fi
+          nc -zv ${{ secrets.DB_HOST }} ${{ secrets.DB_PORT }}
+
+          echo "Databaseforbindelse ser ud til at virke!"
+      
 
       - name: Build with Maven (Debug)
         run: mvn --batch-mode clean package -X
