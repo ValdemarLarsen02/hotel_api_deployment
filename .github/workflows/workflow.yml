@@ -36,19 +36,13 @@ jobs:
           echo "Databaseforbindelse ser ud til at virke!"
       
 
-      - name: Build with Maven (Debug)
+      - name: Build with Maven
         run: mvn --batch-mode clean package
         env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DEPLOYED: ${{ secrets.DEPLOYED }}
           ISSUER: ${{ secrets.ISSUER }}
           TOKEN_EXPIRE_TIME: ${{ secrets.TOKEN_EXPIRE_TIME }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_USE_SSL: ${{ secrets.DB_USE_SSL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
 
 
