@@ -120,14 +120,26 @@ public class HibernateConfig {
 
 
     private static Properties setTestProperties(Properties props) {
-        //props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        props.put("hibernate.connection.driver_class", "org.testcontainers.jdbc.ContainerDatabaseDriver");
-        props.put("hibernate.connection.url", "jdbc:tc:postgresql:15.3-alpine3.18:///test_db");
-        props.put("hibernate.connection.username", "postgres");
-        props.put("hibernate.connection.password", "postgres");
+        String DBName = Utils.getPropertyValue("DB_NAME", "config.properties");
+        String DBHost = Utils.getPropertyValue("DB_HOST", "config.properties");
+        String DBPort = Utils.getPropertyValue("DB_PORT", "config.properties");
+        String DBUsername = Utils.getPropertyValue("DB_USERNAME", "config.properties");
+        String DBPassword = Utils.getPropertyValue("DB_PASSWORD", "config.properties");
+        String DBUseSSL = Utils.getPropertyValue("DB_USE_SSL", "config.properties");
+
+        String jdbcUrl = "jdbc:postgresql://" + DBHost + ":" + DBPort + "/" + DBName;
+
+        if ("true".equalsIgnoreCase(DBUseSSL != null ? DBUseSSL.trim() : "")) {
+            jdbcUrl += "?sslmode=require";
+        }
+
+        props.put("hibernate.connection.url", jdbcUrl);
+        props.put("hibernate.connection.username", DBUsername);
+        props.put("hibernate.connection.password", DBPassword);
         props.put("hibernate.archive.autodetection", "class");
         props.put("hibernate.show_sql", "true");
-        props.put("hibernate.hbm2ddl.auto", "create-drop"); // update for production
+        props.put("hibernate.hbm2ddl.auto", "create-drop"); // Eller "validate" afhængigt af dine behov
         return props;
     }
+
 }
