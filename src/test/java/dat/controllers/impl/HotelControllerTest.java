@@ -47,29 +47,26 @@ class HotelControllerTest {
 
     @BeforeEach
     void setUp() {
-        System.out.println("🔹 Running setUp()...");
+        // Populate the database with hotels and rooms
+        System.out.println("Populating database with hotels and rooms");
+        hotels = Populator.populateHotels(emf);
+        california = hotels[0];
+        hilton = hotels[1];
+        UserDTO[] users = Populator.populateUsers(emf);
+        userDTO = users[0];
+        adminDTO = users[1];
 
-        // Debug konfigurationsværdier
-        System.out.println("🔹 DB_HOST: " + System.getenv("DB_HOST"));
-        System.out.println("🔹 DB_PORT: " + System.getenv("DB_PORT"));
-        System.out.println("🔹 DB_NAME: " + System.getenv("DB_NAME"));
-        System.out.println("🔹 DB_USERNAME: " + System.getenv("DB_USERNAME"));
-        System.out.println("🔹 DB_PASSWORD: " + System.getenv("DB_PASSWORD"));
-        System.out.println("🔹 SECRET_KEY: " + (System.getenv("SECRET_KEY") != null ? "SET ✅" : "❌ NOT FOUND"));
-        System.out.println("🔹 ISSUER: " + System.getenv("ISSUER"));
-        System.out.println("🔹 TOKEN_EXPIRE_TIME: " + System.getenv("TOKEN_EXPIRE_TIME"));
-
-        // Fortsæt som normalt
         try {
             UserDTO verifiedUser = securityDAO.getVerifiedUser(userDTO.getUsername(), userDTO.getPassword());
             UserDTO verifiedAdmin = securityDAO.getVerifiedUser(adminDTO.getUsername(), adminDTO.getPassword());
             userToken = "Bearer " + securityController.createToken(verifiedUser);
             adminToken = "Bearer " + securityController.createToken(verifiedAdmin);
-        } catch (ValidationException e) {
-            throw new RuntimeException("❌ ERROR: Could not create token!", e);
         }
-    }
+        catch (ValidationException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
 
     @AfterEach
     void tearDown() {
