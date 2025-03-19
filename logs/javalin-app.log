@@ -767,3 +767,43 @@ Caused by: org.postgresql.util.PSQLException: ERROR: foreign key constraint "fks
 2025-03-19 10:41:41 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
 2025-03-19 10:41:41 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024. Your Javalin version is 208 days old. Consider checking for a newer version.).
 2025-03-19 10:42:31 [JettyServerThreadPool-46] INFO  dat.config.ApplicationConfig -  Request 1 - GET /api/hotels/populate was handled with status code 200 OK
+2025-03-19 11:11:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2025-03-19 11:11:51 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2025-03-19 11:11:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-19 11:11:52 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@13cd7ea5
+2025-03-19 11:11:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-19 11:11:52 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2025-03-19 11:11:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-03-19 11:11:54 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@32a033b6
+2025-03-19 11:11:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-03-19 11:11:54 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2025-03-19 11:11:54 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-19 11:11:54 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 23.0.2+7-58
+2025-03-19 11:11:54 [main] ERROR io.javalin.Javalin - Failed to start Javalin
+2025-03-19 11:11:54 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@774013dc{STOPPING}[11.0.23,sto=0]
+2025-03-19 11:12:13 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2025-03-19 11:12:13 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2025-03-19 11:12:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-19 11:12:14 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@57b9e423
+2025-03-19 11:12:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-19 11:12:14 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2025-03-19 11:12:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-03-19 11:12:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@4d8056bf
+2025-03-19 11:12:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-03-19 11:12:15 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2025-03-19 11:12:16 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-19 11:12:16 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 23.0.2+7-58
+2025-03-19 11:12:16 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2025-03-19 11:12:16 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@256a5df0{/api,null,AVAILABLE}
+2025-03-19 11:12:16 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@3e28af44{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2025-03-19 11:12:16 [main] INFO  org.eclipse.jetty.server.Server - Started Server@69e36fe3{STARTING}[11.0.23,sto=0] @3595ms
+2025-03-19 11:12:16 [main] INFO  io.javalin.Javalin - Javalin started in 67ms \o/
+2025-03-19 11:12:16 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2025-03-19 11:12:16 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024. Your Javalin version is 208 days old. Consider checking for a newer version.).
+2025-03-19 11:12:18 [JettyServerThreadPool-48] INFO  d.s.controllers.SecurityController - User verified: UserDTO(username=usertest, password=null, roles=[USER])
+2025-03-19 11:12:19 [JettyServerThreadPool-48] INFO  dat.config.ApplicationConfig -  Request 1 - GET /api/hotels was handled with status code 200 OK
+2025-03-19 11:12:19 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2025-03-19 11:12:19 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@69e36fe3{STOPPING}[11.0.23,sto=0]
+2025-03-19 11:12:19 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@3e28af44{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2025-03-19 11:12:19 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@256a5df0{/api,null,STOPPED}
+2025-03-19 11:12:19 [main] INFO  io.javalin.Javalin - Javalin has stopped

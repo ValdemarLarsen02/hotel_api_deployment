@@ -50,10 +50,7 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_USE_SSL: ${{ secrets.DB_USE_SSL }}
 
-      # Debug: Hvis Maven-tests fejler, udskriv Surefire logs
-      - name: Show Surefire Test Logs (If Tests Fail)
-        if: failure()
-        run: cat target/surefire-reports/*.txt || true
+  
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
