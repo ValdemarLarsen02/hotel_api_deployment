@@ -1,4 +1,3 @@
-# .github/workflows/workflow.yml
 name: CI/CD WORKFLOW
 on:
   push:
@@ -18,14 +17,32 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
 
-      - name: Build with Maven
-        run: mvn --batch-mode clean package
+      # Debug: Udskriv miljøvariabler for at sikre, at de er sat korrekt
+      - name: Debug Environment Variables
+        run: env | grep DB_ || echo "No DB_ variables found!"
+
+      # Debug: Test databaseforbindelse til Neon.tech
+      - name: Test Database Connection
+        run: nc -zv ${{ secrets.DB_HOST }} ${{ secrets.DB_PORT }}
+
+      - name: Build with Maven (Debug)
+        run: mvn --batch-mode clean package -X
         env:
           DEPLOYED: ${{ secrets.DEPLOYED }}
           ISSUER: ${{ secrets.ISSUER }}
           TOKEN_EXPIRE_TIME: ${{ secrets.TOKEN_EXPIRE_TIME }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_USE_SSL: ${{ secrets.DB_USE_SSL }}
 
+      # Debug: Hvis Maven-tests fejler, udskriv Surefire logs
+      - name: Show Surefire Test Logs (If Tests Fail)
+        if: failure()
+        run: cat target/surefire-reports/*.txt || true
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
