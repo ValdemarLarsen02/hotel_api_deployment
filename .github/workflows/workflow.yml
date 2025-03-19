@@ -39,10 +39,10 @@ jobs:
       - name: Build with Maven (Debug)
         run: mvn --batch-mode clean package
         env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DEPLOYED: ${{ secrets.DEPLOYED }}
           ISSUER: ${{ secrets.ISSUER }}
           TOKEN_EXPIRE_TIME: ${{ secrets.TOKEN_EXPIRE_TIME }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
           DB_NAME: ${{ secrets.DB_NAME }}
